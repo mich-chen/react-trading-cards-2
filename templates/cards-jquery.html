@@ -28,14 +28,15 @@
     const insertCardData = (response) => {
       // Once the data has been provided by the server,
       // insert it into the page as an HTML string.
-
-      const listOfCards = response.cards;
+      console.log(response);
+      const listOfCards = response;
 
       const container = $('#container');
 
       container.empty()
 
       for (const currentCard of listOfCards) {
+        console.log(currentCard.name);
         if (currentCard.imgUrl === null){
           currentCard.imgUrl = '/static/img/placeholder.png';
         }
@@ -61,8 +62,8 @@
       const skill = $('#skillField').val();
 
       const formData = {
-        skill: skill,
-        name: name
+        'skill': skill,
+        'name': name
       };
 
       $.post('/add-card', formData, (response) => {
