@@ -1,4 +1,4 @@
-var tradingCardData = [
+const tradingCardData = [
   {
     name: 'Balloonicorn',
     skill: 'video games',
@@ -29,9 +29,18 @@ function TradingCard(props) {
 }
 
 function TradingCardContainer() {
+
+   const floatCard = {
+    name: 'Float',
+    skill: 'baking pretzels',
+    imgUrl: '/static/img/float.jpg'
+  };
+
+  const [cards, updateCards] = React.useState([floatCard]);
+
   const tradingCards = [];
 
-  for (const currentCard of tradingCardData) {
+  for (const currentCard of cards) {
     tradingCards.push(
       <TradingCard
         key={currentCard.name}
@@ -41,6 +50,8 @@ function TradingCardContainer() {
       />
     );
   }
+  console.log('second thing');
+  console.log(tradingCards);
 
   return (
     <div>{tradingCards}</div>

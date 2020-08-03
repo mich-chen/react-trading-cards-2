@@ -62,8 +62,8 @@
       const skill = $('#skillField').val();
 
       const formData = {
-        'skill': skill,
-        'name': name
+        skill: skill,
+        name: name
       };
 
       $.post('/add-card', formData, (response) => {
