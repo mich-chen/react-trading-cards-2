@@ -85,18 +85,20 @@ def get_cards_json():
 def add_card():
     """Add a new card to the DB."""
 
-    name = request.form.get('name')
-    skill = request.form.get('skill')
+    # unencode from JSON
+    data = request.get_json()
+    name = data.name
+    skill = data.skill
 
     # new_card = Card(name=name, skill=skill)
     # db.session.add(new_card)
     # db.session.commit()
-    DATA['cards'].append({
-            "name": name,
-            "skill": skill,
-            "imgUrl": "/static/img/placeholder.jpg"
-          })
-
+    # # DATA['cards'].append({
+    #         "name": name,
+    #         "skill": skill,
+    #         "imgUrl": "/static/img/placeholder.png"
+    #       })
+    print((data.name))
     return jsonify({"success": True})
 
 @app.route("/cards-jquery")
